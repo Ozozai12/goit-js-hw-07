@@ -38,18 +38,25 @@ function modalShow(event) {
         <div class="modal">
             <img src="${event.target.dataset.source}"
         </div>
-        `)
+        `,
+        { onClose: (modalWindow) => {
+            window.removeEventListener("keydown", onCloseModalEscape);
+        }})
     
     modalWindow.show()
 
     function onCloseModalEscape(event) {
-       if (event.code === 'Escape') {
-           modalWindow.close();
-           console.log(event)
-           window.removeEventListener("keydown", onCloseModalEscape);
-        } 
+        if (event.code === 'Escape') {
+            modalWindow.close();
+        }
     }
 }
+
+        
+
+
+
+
 
 
     
